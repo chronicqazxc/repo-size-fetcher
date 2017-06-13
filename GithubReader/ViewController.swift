@@ -82,7 +82,19 @@ class ViewController: NSViewController, NSTextFieldDelegate {
         }
     }
     
-    @IBOutlet var result: NSTextView!
+    var logFont: NSFont {
+        get {
+            return NSFont(name: "Avenir-Roman", size: 16.0) ?? NSFont.systemFont(ofSize: 16.0)
+        }
+    }
+    
+    @IBOutlet var result: NSTextView! {
+        didSet {
+            result.textColor = NSColor.white
+            result.font = logFont
+        }
+    }
+    
     @IBOutlet weak var indicator: NSProgressIndicator!
     
     @IBOutlet weak var version: NSTextField! {
@@ -131,7 +143,7 @@ class ViewController: NSViewController, NSTextFieldDelegate {
             }
 
             strongself.result.textStorage?.append(NSAttributedString(string: $0, attributes: [NSForegroundColorAttributeName : NSColor.white,
-                                                                                              NSFontAttributeName : NSFont(name: "Avenir-Roman", size: 16.0) ?? NSFont.systemFont(ofSize: 16.0)]))
+                                                                                              NSFontAttributeName : strongself.logFont]))
         }
     }
     
