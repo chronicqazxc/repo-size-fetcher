@@ -684,43 +684,43 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="RepoSizeFetcher" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="400"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="KLf-ga-jN7">
-                                <rect key="frame" x="21" y="245" width="16" height="16"/>
+                                <rect key="frame" x="21" y="375" width="16" height="16"/>
                             </progressIndicator>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HO1-Zh-iU2">
-                                <rect key="frame" x="20" y="128" width="440" height="112"/>
+                                <rect key="frame" x="20" y="234" width="560" height="136"/>
                                 <subviews>
                                     <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQW-NL-dFp" userLabel="orginization">
-                                        <rect key="frame" x="0.0" y="90" width="440" height="22"/>
+                                        <rect key="frame" x="0.0" y="108" width="440" height="28"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Orginization" drawsBackground="YES" id="Sv6-Zs-w4l">
-                                            <font key="font" metaFont="system"/>
+                                            <font key="font" size="13" name="Avenir-Roman"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
                                     <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0SC-R8-ekA" userLabel="repo">
-                                        <rect key="frame" x="0.0" y="60" width="440" height="22"/>
+                                        <rect key="frame" x="0.0" y="72" width="440" height="28"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Repo" drawsBackground="YES" id="nkb-zG-6Gi">
-                                            <font key="font" metaFont="system"/>
+                                            <font key="font" size="13" name="Avenir-Roman"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
                                     <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bPD-hy-drh" userLabel="username">
-                                        <rect key="frame" x="0.0" y="30" width="440" height="22"/>
+                                        <rect key="frame" x="0.0" y="36" width="440" height="28"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Username" drawsBackground="YES" id="GCk-Ar-gpa">
-                                            <font key="font" metaFont="system"/>
+                                            <font key="font" size="13" name="Avenir-Roman"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
                                     <secureTextField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kTA-SX-uwx" userLabel="token">
-                                        <rect key="frame" x="0.0" y="0.0" width="440" height="22"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="440" height="28"/>
                                         <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="token" drawsBackground="YES" usesSingleLineMode="YES" id="hkt-dn-CIr">
-                                            <font key="font" metaFont="system"/>
+                                            <font key="font" size="13" name="Avenir-Roman"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <allowedInputSourceLocales>
@@ -743,28 +743,28 @@
                                 </customSpacing>
                             </stackView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gRe-Yd-95p">
-                                <rect key="frame" x="14" y="13" width="452" height="32"/>
+                                <rect key="frame" x="14" y="13" width="572" height="32"/>
                                 <buttonCell key="cell" type="push" title="Fetch" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8t5-vY-wU9">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
+                                    <font key="font" size="13" name="Avenir-Roman"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="fetch:" target="XfG-lQ-9wD" id="0Q1-fo-5Ss"/>
                                 </connections>
                             </button>
                             <scrollView wantsLayer="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jYg-vl-tiI">
-                                <rect key="frame" x="20" y="51" width="440" height="67"/>
+                                <rect key="frame" x="20" y="51" width="560" height="173"/>
                                 <clipView key="contentView" id="tSc-si-ulU">
-                                    <rect key="frame" x="1" y="1" width="438" height="65"/>
+                                    <rect key="frame" x="1" y="1" width="558" height="171"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView importsGraphics="NO" usesFontPanel="YES" findStyle="panel" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" textCompletion="NO" id="GIc-WO-SOl">
-                                            <rect key="frame" x="0.0" y="-0.5" width="615" height="65"/>
+                                            <rect key="frame" x="0.0" y="-0.5" width="735" height="171"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="selectedControlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="438" height="65"/>
-                                            <size key="maxSize" width="615" height="10000000"/>
+                                            <size key="minSize" width="558" height="171"/>
+                                            <size key="maxSize" width="735" height="10000000"/>
                                             <color key="insertionPointColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                                         </textView>
                                     </subviews>
@@ -775,24 +775,27 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="409-Bm-glE">
-                                    <rect key="frame" x="423" y="1" width="16" height="65"/>
+                                    <rect key="frame" x="543" y="1" width="16" height="171"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="50D-H6-dSW">
-                                <rect key="frame" x="185" y="1" width="276" height="13"/>
-                                <buttonCell key="cell" type="inline" title="https://github.disney.com/HSIAY003/repo-size-fetcher" bezelStyle="inline" image="61FA29CC-FE30-41ED-8EC6-98B9E291A584" imagePosition="overlaps" alignment="center" inset="2" id="O6U-7j-YIW">
+                                <rect key="frame" x="306" y="1" width="275" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="275" id="zqn-eA-niV"/>
+                                </constraints>
+                                <buttonCell key="cell" type="inline" title="https://github.disney.com/HSIAY003/repo-size-fetcher" bezelStyle="inline" image="52528ECB-549E-42B4-A19A-8759D6AC2EC2" imagePosition="overlaps" alignment="center" inset="2" id="O6U-7j-YIW">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system" size="10"/>
+                                    <font key="font" size="10" name="Avenir-Roman"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="open:" target="XfG-lQ-9wD" id="KWY-Uy-BP3"/>
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uhf-Pp-fiw">
-                                <rect key="frame" x="21" y="1" width="31" height="13"/>
+                                <rect key="frame" x="21" y="1" width="29" height="18"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="fPw-cc-H2L">
-                                    <font key="font" metaFont="system" size="10"/>
+                                    <font key="font" size="10" name="Avenir-Roman"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -835,7 +838,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="61FA29CC-FE30-41ED-8EC6-98B9E291A584" width="1" height="1">
+        <image name="52528ECB-549E-42B4-A19A-8759D6AC2EC2" width="1" height="1">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

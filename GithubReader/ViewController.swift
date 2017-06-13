@@ -81,7 +81,9 @@ class ViewController: NSViewController, NSTextFieldDelegate {
             if let control = sender as? NSControl {
                 control.isEnabled = true
             }
-            strongself.result.textStorage?.append(NSAttributedString(string: $0, attributes: [NSForegroundColorAttributeName : NSColor.white]))
+
+            strongself.result.textStorage?.append(NSAttributedString(string: $0, attributes: [NSForegroundColorAttributeName : NSColor.white,
+                                                                                              NSFontAttributeName : NSFont(name: "Avenir-Roman", size: 16.0) ?? NSFont.systemFont(ofSize: 16.0)]))
         }
     }
     
