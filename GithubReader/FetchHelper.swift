@@ -70,6 +70,6 @@ class FetchHelper {
     }
     
     func resultText(org:String, repo: String, size: String) -> String {
-        return "\(org) - \(repo): \(size)"
+        return "\(org) - \(repo): \(size) \n"
     }
 }

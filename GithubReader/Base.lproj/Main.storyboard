@@ -758,13 +758,14 @@
                                     <rect key="frame" x="1" y="1" width="438" height="65"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textView importsGraphics="NO" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="GIc-WO-SOl">
-                                            <rect key="frame" x="0.0" y="-0.5" width="438" height="65"/>
+                                        <textView importsGraphics="NO" usesFontPanel="YES" findStyle="panel" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" textCompletion="NO" id="GIc-WO-SOl">
+                                            <rect key="frame" x="0.0" y="-0.5" width="615" height="65"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="selectedControlTextColor" catalog="System" colorSpace="catalog"/>
                                             <size key="minSize" width="438" height="65"/>
-                                            <size key="maxSize" width="463" height="10000000"/>
-                                            <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <size key="maxSize" width="615" height="10000000"/>
+                                            <color key="insertionPointColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                                         </textView>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -780,7 +781,7 @@
                             </scrollView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="50D-H6-dSW">
                                 <rect key="frame" x="185" y="1" width="276" height="13"/>
-                                <buttonCell key="cell" type="inline" title="https://github.disney.com/HSIAY003/repo-size-fetcher" bezelStyle="inline" image="D7F37690-0168-4DEF-B7B0-A5113B8A40C1" imagePosition="overlaps" alignment="center" inset="2" id="O6U-7j-YIW">
+                                <buttonCell key="cell" type="inline" title="https://github.disney.com/HSIAY003/repo-size-fetcher" bezelStyle="inline" image="61FA29CC-FE30-41ED-8EC6-98B9E291A584" imagePosition="overlaps" alignment="center" inset="2" id="O6U-7j-YIW">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system" size="10"/>
                                 </buttonCell>
@@ -818,6 +819,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="fetchButton" destination="gRe-Yd-95p" id="gcc-jk-TJf"/>
                         <outlet property="indicator" destination="KLf-ga-jN7" id="6Vt-C0-wMz"/>
                         <outlet property="orginization" destination="gQW-NL-dFp" id="Ldj-cA-h4p"/>
                         <outlet property="repo" destination="0SC-R8-ekA" id="OTm-88-T1C"/>
@@ -833,7 +835,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="D7F37690-0168-4DEF-B7B0-A5113B8A40C1" width="1" height="1">
+        <image name="61FA29CC-FE30-41ED-8EC6-98B9E291A584" width="1" height="1">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
