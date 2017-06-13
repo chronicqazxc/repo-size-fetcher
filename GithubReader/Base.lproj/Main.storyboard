@@ -784,7 +784,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="275" id="zqn-eA-niV"/>
                                 </constraints>
-                                <buttonCell key="cell" type="inline" title="https://github.disney.com/HSIAY003/repo-size-fetcher" bezelStyle="inline" image="52528ECB-549E-42B4-A19A-8759D6AC2EC2" imagePosition="overlaps" alignment="center" inset="2" id="O6U-7j-YIW">
+                                <buttonCell key="cell" type="inline" title="https://github.disney.com/HSIAY003/repo-size-fetcher" bezelStyle="inline" image="431DDA84-654F-46DE-ACD2-6CF5AE520BD3" imagePosition="overlaps" alignment="center" inset="2" id="O6U-7j-YIW">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" size="10" name="Avenir-Roman"/>
                                 </buttonCell>
@@ -838,7 +838,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="52528ECB-549E-42B4-A19A-8759D6AC2EC2" width="1" height="1">
+        <image name="431DDA84-654F-46DE-ACD2-6CF5AE520BD3" width="1" height="1">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
