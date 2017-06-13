@@ -779,8 +779,8 @@
                                 </scroller>
                             </scrollView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="50D-H6-dSW">
-                                <rect key="frame" x="273" y="1" width="188" height="13"/>
-                                <buttonCell key="cell" type="inline" title="https://github.disney.com/HSIAY003" bezelStyle="inline" image="A8F2974B-C28C-4E31-87D1-FE76D99BE8E7" imagePosition="overlaps" alignment="center" inset="2" id="O6U-7j-YIW">
+                                <rect key="frame" x="185" y="1" width="276" height="13"/>
+                                <buttonCell key="cell" type="inline" title="https://github.disney.com/HSIAY003/repo-size-fetcher" bezelStyle="inline" image="D7F37690-0168-4DEF-B7B0-A5113B8A40C1" imagePosition="overlaps" alignment="center" inset="2" id="O6U-7j-YIW">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system" size="10"/>
                                 </buttonCell>
@@ -833,7 +833,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="A8F2974B-C28C-4E31-87D1-FE76D99BE8E7" width="1" height="1">
+        <image name="D7F37690-0168-4DEF-B7B0-A5113B8A40C1" width="1" height="1">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
