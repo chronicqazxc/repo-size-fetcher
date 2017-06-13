@@ -691,35 +691,76 @@
                                 <rect key="frame" x="21" y="375" width="16" height="16"/>
                             </progressIndicator>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HO1-Zh-iU2">
-                                <rect key="frame" x="20" y="234" width="560" height="136"/>
+                                <rect key="frame" x="20" y="110" width="560" height="260"/>
                                 <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YPG-jL-k1Y" userLabel="orgLabel">
+                                        <rect key="frame" x="-2" y="237" width="54" height="23"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="Enf-P4-qfV">
+                                            <font key="font" size="13" name="Avenir-Black"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
                                     <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQW-NL-dFp" userLabel="orginization">
-                                        <rect key="frame" x="0.0" y="108" width="440" height="28"/>
+                                        <rect key="frame" x="0.0" y="201" width="560" height="28"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Orginization" drawsBackground="YES" id="Sv6-Zs-w4l">
                                             <font key="font" size="13" name="Avenir-Roman"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
+                                        <connections>
+                                            <outlet property="delegate" destination="XfG-lQ-9wD" id="QIK-77-Opg"/>
+                                        </connections>
+                                    </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sl0-OG-hoN" userLabel="repoLabel">
+                                        <rect key="frame" x="-2" y="170" width="54" height="23"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="2wu-5W-asU">
+                                            <font key="font" size="13" name="Avenir-Black"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
                                     </textField>
                                     <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0SC-R8-ekA" userLabel="repo">
-                                        <rect key="frame" x="0.0" y="72" width="440" height="28"/>
+                                        <rect key="frame" x="0.0" y="134" width="560" height="28"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Repo" drawsBackground="YES" id="nkb-zG-6Gi">
                                             <font key="font" size="13" name="Avenir-Roman"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
+                                        <connections>
+                                            <outlet property="delegate" destination="XfG-lQ-9wD" id="kHZ-jW-CGM"/>
+                                        </connections>
+                                    </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7pj-NF-THl" userLabel="usernameLabel">
+                                        <rect key="frame" x="-2" y="103" width="54" height="23"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="cwg-oq-m47">
+                                            <font key="font" size="13" name="Avenir-Black"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
                                     </textField>
                                     <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bPD-hy-drh" userLabel="username">
-                                        <rect key="frame" x="0.0" y="36" width="440" height="28"/>
+                                        <rect key="frame" x="0.0" y="67" width="560" height="28"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Username" drawsBackground="YES" id="GCk-Ar-gpa">
                                             <font key="font" size="13" name="Avenir-Roman"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
+                                        <connections>
+                                            <outlet property="delegate" destination="XfG-lQ-9wD" id="5TJ-LM-L9g"/>
+                                        </connections>
+                                    </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lSc-cR-7SX" userLabel="tokenLabel">
+                                        <rect key="frame" x="-2" y="36" width="54" height="23"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="eDo-j2-Vgi">
+                                            <font key="font" size="13" name="Avenir-Black"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
                                     </textField>
                                     <secureTextField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kTA-SX-uwx" userLabel="token">
-                                        <rect key="frame" x="0.0" y="0.0" width="440" height="28"/>
-                                        <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="token" drawsBackground="YES" usesSingleLineMode="YES" id="hkt-dn-CIr">
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="28"/>
+                                        <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Token" drawsBackground="YES" usesSingleLineMode="YES" id="hkt-dn-CIr">
                                             <font key="font" size="13" name="Avenir-Roman"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -727,6 +768,9 @@
                                                 <string>NSAllRomanInputSourcesLocaleIdentifier</string>
                                             </allowedInputSourceLocales>
                                         </secureTextFieldCell>
+                                        <connections>
+                                            <outlet property="delegate" destination="XfG-lQ-9wD" id="Is1-TG-iOx"/>
+                                        </connections>
                                     </secureTextField>
                                 </subviews>
                                 <visibilityPriorities>
@@ -734,8 +778,16 @@
                                     <integer value="1000"/>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
                                 </visibilityPriorities>
                                 <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
@@ -753,18 +805,18 @@
                                 </connections>
                             </button>
                             <scrollView wantsLayer="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jYg-vl-tiI">
-                                <rect key="frame" x="20" y="51" width="560" height="173"/>
+                                <rect key="frame" x="20" y="51" width="560" height="49"/>
                                 <clipView key="contentView" id="tSc-si-ulU">
-                                    <rect key="frame" x="1" y="1" width="558" height="171"/>
+                                    <rect key="frame" x="1" y="1" width="558" height="47"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView importsGraphics="NO" usesFontPanel="YES" findStyle="panel" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" textCompletion="NO" id="GIc-WO-SOl">
-                                            <rect key="frame" x="0.0" y="-0.5" width="735" height="171"/>
+                                            <rect key="frame" x="0.0" y="-0.5" width="735" height="47"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="textColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="selectedControlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="558" height="171"/>
-                                            <size key="maxSize" width="735" height="10000000"/>
+                                            <size key="minSize" width="558" height="47"/>
+                                            <size key="maxSize" width="737" height="10000000"/>
                                             <color key="insertionPointColor" name="highlightColor" catalog="System" colorSpace="catalog"/>
                                         </textView>
                                     </subviews>
@@ -775,7 +827,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="409-Bm-glE">
-                                    <rect key="frame" x="543" y="1" width="16" height="171"/>
+                                    <rect key="frame" x="543" y="1" width="16" height="47"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
@@ -784,7 +836,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="275" id="zqn-eA-niV"/>
                                 </constraints>
-                                <buttonCell key="cell" type="inline" title="https://github.disney.com/HSIAY003/repo-size-fetcher" bezelStyle="inline" image="431DDA84-654F-46DE-ACD2-6CF5AE520BD3" imagePosition="overlaps" alignment="center" inset="2" id="O6U-7j-YIW">
+                                <buttonCell key="cell" type="inline" title="https://github.disney.com/HSIAY003/repo-size-fetcher" bezelStyle="inline" image="832CCD4F-F198-4BCD-A0AB-F365CC081A70" imagePosition="overlaps" alignment="center" inset="2" id="O6U-7j-YIW">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" size="10" name="Avenir-Roman"/>
                                 </buttonCell>
@@ -825,10 +877,14 @@
                         <outlet property="fetchButton" destination="gRe-Yd-95p" id="gcc-jk-TJf"/>
                         <outlet property="indicator" destination="KLf-ga-jN7" id="6Vt-C0-wMz"/>
                         <outlet property="orginization" destination="gQW-NL-dFp" id="Ldj-cA-h4p"/>
+                        <outlet property="orginizationLabel" destination="YPG-jL-k1Y" id="EYc-0o-jAH"/>
                         <outlet property="repo" destination="0SC-R8-ekA" id="OTm-88-T1C"/>
+                        <outlet property="repoLabel" destination="sl0-OG-hoN" id="Y3k-5M-rl4"/>
                         <outlet property="result" destination="GIc-WO-SOl" id="J4d-cO-d6M"/>
                         <outlet property="token" destination="kTA-SX-uwx" id="gGg-S7-Hst"/>
+                        <outlet property="tokenLabel" destination="lSc-cR-7SX" id="7ma-Cy-vek"/>
                         <outlet property="username" destination="bPD-hy-drh" id="fNl-6q-IV4"/>
+                        <outlet property="usernameLabel" destination="7pj-NF-THl" id="tde-Df-Ab5"/>
                         <outlet property="version" destination="uhf-Pp-fiw" id="tRy-Wt-Y9k"/>
                     </connections>
                 </viewController>
@@ -838,7 +894,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="431DDA84-654F-46DE-ACD2-6CF5AE520BD3" width="1" height="1">
+        <image name="832CCD4F-F198-4BCD-A0AB-F365CC081A70" width="1" height="1">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

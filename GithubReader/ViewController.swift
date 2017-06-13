@@ -10,6 +10,54 @@ import Cocoa
 
 class ViewController: NSViewController, NSTextFieldDelegate {
     
+    @IBOutlet weak var orginizationLabel: NSTextField! {
+        didSet {
+            NotificationCenter.default.addObserver(forName: NSNotification.Name.NSControlTextDidChange, object: orginization, queue: nil) { [weak self] (notification) in
+                if self?.orginization.stringValue == "" {
+                    self?.orginizationLabel.stringValue = ""
+                } else {
+                    self?.orginizationLabel.stringValue = "Orginization"
+                }
+            }
+        }
+    }
+    
+    @IBOutlet weak var repoLabel: NSTextField! {
+        didSet {
+            NotificationCenter.default.addObserver(forName: NSNotification.Name.NSControlTextDidChange, object: repo, queue: nil) { [weak self] (notification) in
+                if self?.repo.stringValue == "" {
+                    self?.repoLabel.stringValue = ""
+                } else {
+                    self?.repoLabel.stringValue = "Repo"
+                }
+            }
+        }
+    }
+    
+    @IBOutlet weak var usernameLabel: NSTextField! {
+        didSet {
+            NotificationCenter.default.addObserver(forName: NSNotification.Name.NSControlTextDidChange, object: username, queue: nil) { [weak self] (notification) in
+                if self?.username.stringValue == "" {
+                    self?.usernameLabel.stringValue = ""
+                } else {
+                    self?.usernameLabel.stringValue = "Username"
+                }
+            }
+        }
+    }
+    
+    @IBOutlet weak var tokenLabel: NSTextField! {
+        didSet {
+            NotificationCenter.default.addObserver(forName: NSNotification.Name.NSControlTextDidChange, object: token, queue: nil) { [weak self] (notification) in
+                if self?.token.stringValue == "" {
+                    self?.tokenLabel.stringValue = ""
+                } else {
+                    self?.tokenLabel.stringValue = "Token"
+                }
+            }
+        }
+    }
+    
     @IBOutlet weak var orginization: NSTextField! {
         didSet {
             orginization.delegate = self
@@ -92,7 +140,7 @@ class ViewController: NSViewController, NSTextFieldDelegate {
             NSWorkspace.shared().open(url)
         }
     }
-    
+
     override func controlTextDidEndEditing(_ obj: Notification) {
         if let number = obj.userInfo?["NSTextMovement"] as? NSNumber, number.intValue == NSReturnTextMovement {
             if fetchButton.isEnabled == true {
