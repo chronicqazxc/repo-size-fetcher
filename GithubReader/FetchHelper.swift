@@ -15,6 +15,30 @@ struct FetchRequest {
     let token: String
 }
 
+struct FetchResponse {
+    let result: String
+    
+    func parse() {
+        
+        guard result.characters.count > 1 else { return }
+        
+        let formatted = "{\(result.substring(to: result.index(result.endIndex, offsetBy: -2)))}"
+        
+        if let data = formatted.data(using: .utf8) {
+            
+            let json = try? JSONSerialization.jsonObject(with: data, options: [])
+            
+            print(json ?? "parse faild")
+            
+            // TODO: Parse size
+            if let dic = json as? [AnyHashable : Any] {
+                let size = dic["size"]
+                print(size ?? "size not found")
+            }
+        }
+    }
+}
+
 class FetchHelper {
     let request: FetchRequest
     
@@ -30,7 +54,7 @@ class FetchHelper {
         
         DispatchQueue.global(qos: .userInitiated).async {
             
-            print("\(log): \(ProcessInfo.processInfo.processIdentifier)")
+            print("\(log ?? ""): \(ProcessInfo.processInfo.processIdentifier)")
             
             let pipe = Pipe()
             let file = pipe.fileHandleForReading
@@ -56,20 +80,22 @@ class FetchHelper {
             let data = file.readDataToEndOfFile()
             
             file.closeFile()
+
+            let grepOutput = String(data: data, encoding: .utf8) ?? ""
             
-            let grepOutput = String(data: data, encoding: .utf8)
-            print(grepOutput ?? "")
+            // TODO: Return response
+//            let response = FetchResponse(result: grepOutput)
             
             DispatchQueue.main.async {
                 
                 completeHandler(self.resultText(org: self.request.orginization,
                                                 repo: self.request.repo,
-                                                size: grepOutput ?? ""))
+                                                size: grepOutput))
             }
         }
     }
     
     func resultText(org:String, repo: String, size: String) -> String {
-        return "\(org) - \(repo): \(size) \n"
+        return "\(org) - \(repo): \n \(size) \n"
     }
 }

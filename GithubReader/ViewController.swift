@@ -95,11 +95,16 @@ class ViewController: NSViewController, NSTextFieldDelegate {
         }
     }
     
-    @IBOutlet weak var indicator: NSProgressIndicator!
+    @IBOutlet weak var indicator: NSProgressIndicator! {
+        didSet {
+            indicator.isHidden = true
+            indicator.startAnimation(nil)
+        }
+    }
     
     @IBOutlet weak var version: NSTextField! {
         didSet {
-            version.stringValue = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
+            version.stringValue = "v:\(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "")"
         }
     }
     
@@ -107,8 +112,6 @@ class ViewController: NSViewController, NSTextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        indicator.isHidden = true
-        indicator.startAnimation(nil)
         // Do any additional setup after loading the view.
         
     }
