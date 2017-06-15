@@ -15,6 +15,8 @@
 		01249A531EEEC76D00469022 /* GithubReaderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01249A521EEEC76D00469022 /* GithubReaderUITests.swift */; };
 		01249A631EEECA4900469022 /* fetch.sh in Resources */ = {isa = PBXBuildFile; fileRef = 01249A621EEECA4900469022 /* fetch.sh */; };
 		01249A651EEF7D0400469022 /* FetchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01249A641EEF7D0400469022 /* FetchHelper.swift */; };
+		01249A691EF2733600469022 /* FetcherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01249A681EF2733600469022 /* FetcherViewModel.swift */; };
+		01249A6A1EF27F7200469022 /* FetcherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01249A681EF2733600469022 /* FetcherViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,7 @@
 		01249A541EEEC76D00469022 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01249A621EEECA4900469022 /* fetch.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = fetch.sh; sourceTree = "<group>"; };
 		01249A641EEF7D0400469022 /* FetchHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchHelper.swift; sourceTree = "<group>"; };
+		01249A681EF2733600469022 /* FetcherViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetcherViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +104,7 @@
 			children = (
 				01249A351EEEC76D00469022 /* AppDelegate.swift */,
 				01249A371EEEC76D00469022 /* ViewController.swift */,
+				01249A681EF2733600469022 /* FetcherViewModel.swift */,
 				01249A641EEF7D0400469022 /* FetchHelper.swift */,
 				01249A621EEECA4900469022 /* fetch.sh */,
 				01249A391EEEC76D00469022 /* Assets.xcassets */,
@@ -267,6 +271,7 @@
 			files = (
 				01249A381EEEC76D00469022 /* ViewController.swift in Sources */,
 				01249A651EEF7D0400469022 /* FetchHelper.swift in Sources */,
+				01249A691EF2733600469022 /* FetcherViewModel.swift in Sources */,
 				01249A361EEEC76D00469022 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -275,6 +280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01249A6A1EF27F7200469022 /* FetcherViewModel.swift in Sources */,
 				01249A481EEEC76D00469022 /* GithubReaderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -444,7 +450,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.disney.GithubReaderTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GithubReader.app/Contents/MacOS/GithubReader";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RepoSizeFetcher.app/Contents/MacOS/RepoSizeFetcher";
 			};
 			name = Debug;
 		};
@@ -460,7 +466,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.disney.GithubReaderTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GithubReader.app/Contents/MacOS/GithubReader";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RepoSizeFetcher.app/Contents/MacOS/RepoSizeFetcher";
 			};
 			name = Release;
 		};

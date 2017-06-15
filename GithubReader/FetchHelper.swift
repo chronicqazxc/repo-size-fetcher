@@ -9,10 +9,13 @@
 import Foundation
 
 struct FetchRequest {
-    let orginization: String
-    let repo: String
+    let gitUrl: String
     let username: String
     let token: String
+}
+
+struct FetchResponse {
+    let data: Data
 }
 
 class FetchHelper {
@@ -26,11 +29,10 @@ class FetchHelper {
         self.request = request
     }
     
-    func fetch(log: String? = #function, completeHandler: @escaping (String)->()) {
-        
+    func fetch(log: String? = #function, completeHandler: @escaping (Data?)->()) {
         DispatchQueue.global(qos: .userInitiated).async {
             
-            print("\(log): \(ProcessInfo.processInfo.processIdentifier)")
+            print("\(log ?? ""): \(ProcessInfo.processInfo.processIdentifier)")
             
             let pipe = Pipe()
             let file = pipe.fileHandleForReading
@@ -41,12 +43,12 @@ class FetchHelper {
             guard let path = Bundle.main.path(forResource: "fetch",
                                               ofType: "sh") else {
                                                 print("shell not found")
+                                                completeHandler(nil)
                                                 return
             }
             
             task.arguments = [path,
-                              self.request.orginization,
-                              self.request.repo,
+                              self.request.gitUrl,
                               self.request.username,
                               self.request.token]
             
@@ -57,19 +59,11 @@ class FetchHelper {
             
             file.closeFile()
             
-            let grepOutput = String(data: data, encoding: .utf8)
-            print(grepOutput ?? "")
-            
-            DispatchQueue.main.async {
-                
-                completeHandler(self.resultText(org: self.request.orginization,
-                                                repo: self.request.repo,
-                                                size: grepOutput ?? ""))
-            }
+            completeHandler(data)
         }
     }
     
     func resultText(org:String, repo: String, size: String) -> String {
-        return "\(org) - \(repo): \(size) \n"
+        return "\(org) - \(repo): \n \(size) \n"
     }
 }
