@@ -9,8 +9,7 @@
 import Foundation
 
 struct FetchRequest {
-    let orginization: String
-    let repo: String
+    let gitUrl: String
     let username: String
     let token: String
 }
@@ -30,8 +29,7 @@ class FetchHelper {
         self.request = request
     }
     
-    func fetch(log: String? = #function, completeHandler: @escaping (Data)->()) {
-        
+    func fetch(log: String? = #function, completeHandler: @escaping (Data?)->()) {
         DispatchQueue.global(qos: .userInitiated).async {
             
             print("\(log ?? ""): \(ProcessInfo.processInfo.processIdentifier)")
@@ -45,12 +43,12 @@ class FetchHelper {
             guard let path = Bundle.main.path(forResource: "fetch",
                                               ofType: "sh") else {
                                                 print("shell not found")
+                                                completeHandler(nil)
                                                 return
             }
             
             task.arguments = [path,
-                              self.request.orginization,
-                              self.request.repo,
+                              self.request.gitUrl,
                               self.request.username,
                               self.request.token]
             

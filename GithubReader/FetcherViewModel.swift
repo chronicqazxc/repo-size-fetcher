@@ -29,11 +29,13 @@ class FetcherViewModel {
     private(set) var parent: FetcherViewModel?
     private(set) var source: FetcherViewModel?
     
+    private var gitUrl: NSTextField?
     private var orginization: NSTextField?
     private var repo: NSTextField?
     private var username: NSTextField?
     private var token: NSTextField?
     private var result: NSTextView?
+    private var selectStatus: Status?
     
     private init(data: [AnyHashable : Any]) {
         fullName = data[kFullName] as? String ?? ""
@@ -49,31 +51,48 @@ class FetcherViewModel {
         }
     }
     
-    init(orginization: NSTextField,
+    init(gitUrl: NSTextField,
+         orginization: NSTextField,
          repo: NSTextField,
          username: NSTextField,
          token: NSTextField,
-         result: NSTextView) {
+         result: NSTextView,
+         selectStatus: Status) {
+        self.gitUrl = gitUrl
         self.orginization = orginization
         self.repo = repo
         self.username = username
         self.token = token
         self.result = result
+        self.selectStatus = selectStatus
     }
     
     func fetch(log: String? = #function, completeHandler: @escaping ()->()) {
 
-        guard let orginization = orginization,
-            let repo = repo,
-            let username = username,
-            let token = token else {
-                return
-        }
+        guard let selectStatus = selectStatus else { return }
         
-        let fetchRequest = FetchRequest(orginization: orginization.stringValue,
-                                        repo: repo.stringValue,
-                                        username: username.stringValue,
-                                        token: token.stringValue)
+        switch selectStatus.currentSelect {
+            case .orgnization:
+                guard let _ = orginization,
+                    let _ = repo,
+                    let _ = username,
+                    let _ = token else {
+                        return
+            }
+            
+        case .githubUrl:
+            guard let _ = self.gitUrl,
+                let _ = username,
+                let _ = token else {
+                    return
+            }
+        }
+
+        let gitUrl = selectStatus.currentSelect == .orgnization ? "http://\(orginization!.stringValue)/\(repo!.stringValue).git" : self.gitUrl!.stringValue
+        
+        let fetchRequest = FetchRequest(gitUrl: gitUrl,
+                                        username: username!.stringValue,
+                                        token: token!.stringValue)
         
         let fetchHelper = FetchHelper(request: fetchRequest)
         
@@ -84,7 +103,11 @@ class FetcherViewModel {
                 return
             }
             
-            strongself.parse(data: result) {
+            if let result = result {
+                strongself.parse(data: result) {
+                    completeHandler()
+                }
+            } else {
                 completeHandler()
             }
         }
@@ -92,8 +115,15 @@ class FetcherViewModel {
     
     func parse(data: Data, completeHandler: ()->()) {
         
-        guard let jsonData = try? JSONSerialization.jsonObject(with: data, options: []) else { return }
-        guard let json = jsonData as? [AnyHashable : Any] else { return }
+        guard let jsonData = try? JSONSerialization.jsonObject(with: data, options: []) else {
+            completeHandler()
+            return
+        }
+        
+        guard let json = jsonData as? [AnyHashable : Any] else {
+            completeHandler()
+            return
+        }
         
         fullName = json[kFullName] as? String ?? ""
         size = json[kSize] as? Int ?? 0

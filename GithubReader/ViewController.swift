@@ -8,7 +8,42 @@
 
 import Cocoa
 
-class ViewController: NSViewController, NSTextFieldDelegate {
+class Status {
+    enum Select: Int {
+        case orgnization = 1, githubUrl
+    }
+    
+    var currentSelect: Select = .orgnization
+    
+    init(currentSelect: Select) {
+        self.currentSelect = currentSelect
+    }
+    
+}
+
+class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate {
+    
+    var selectStatus = Status(currentSelect: .orgnization)
+    
+    @IBOutlet weak var tabView: NSTabView! {
+        didSet {
+            tabView.delegate = self
+        }
+    }
+    
+    @IBOutlet weak var gitUrlLabel: NSTextField! {
+        didSet {
+            gitUrlLabel.stringValue = ""
+            
+            NotificationCenter.default.addObserver(forName: NSNotification.Name.NSControlTextDidChange, object: gitUrl, queue: nil) { [weak self] (notification) in
+                if self?.gitUrl.stringValue == "" {
+                    self?.gitUrlLabel.stringValue = ""
+                } else {
+                    self?.gitUrlLabel.stringValue = "Git URL"
+                }
+            }
+        }
+    }
     
     @IBOutlet weak var orginizationLabel: NSTextField! {
         didSet {
@@ -57,6 +92,12 @@ class ViewController: NSViewController, NSTextFieldDelegate {
                     self?.tokenLabel.stringValue = "Token"
                 }
             }
+        }
+    }
+    
+    @IBOutlet weak var gitUrl: NSTextField! {
+        didSet {
+            gitUrl.delegate = self
         }
     }
     
@@ -117,11 +158,13 @@ class ViewController: NSViewController, NSTextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        viewModel = FetcherViewModel(orginization: orginization,
+        viewModel = FetcherViewModel(gitUrl: gitUrl,
+                                     orginization: orginization,
                                      repo: repo,
                                      username: username,
                                      token: token,
-                                     result: result)
+                                     result: result,
+                                     selectStatus: selectStatus)
     }
 
     override var representedObject: Any? {
@@ -204,6 +247,14 @@ class ViewController: NSViewController, NSTextFieldDelegate {
 //                break
 //            }
         }
+    }
+    
+    func tabView(_ tabView: NSTabView, didSelect tabViewItem: NSTabViewItem?) {
+        
+        if let select = tabViewItem?.identifier as? String {
+            selectStatus.currentSelect = Status.Select(rawValue: Int(select)!) ?? .orgnization
+        }
+
     }
     
     func formattedResult() -> NSMutableAttributedString {
