@@ -24,6 +24,8 @@ class ViewController: NSViewController, NSTextFieldDelegate {
     
     @IBOutlet weak var repoLabel: NSTextField! {
         didSet {
+            repoLabel.becomeFirstResponder()
+            
             NotificationCenter.default.addObserver(forName: NSNotification.Name.NSControlTextDidChange, object: repo, queue: nil) { [weak self] (notification) in
                 if self?.repo.stringValue == "" {
                     self?.repoLabel.stringValue = ""
@@ -82,12 +84,6 @@ class ViewController: NSViewController, NSTextFieldDelegate {
         }
     }
     
-    var logFont: NSFont {
-        get {
-            return NSFont(name: "Avenir-Roman", size: 16.0) ?? NSFont.systemFont(ofSize: 16.0)
-        }
-    }
-    
     @IBOutlet var result: NSTextView! {
         didSet {
             result.textColor = NSColor.white
@@ -110,10 +106,22 @@ class ViewController: NSViewController, NSTextFieldDelegate {
     
     @IBOutlet weak var fetchButton: NSButton!
     
+    var logFont: NSFont {
+        get {
+            return NSFont(name: "Avenir-Roman", size: 16.0) ?? NSFont.systemFont(ofSize: 16.0)
+        }
+    }
+    
+    var viewModel: FetcherViewModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+        viewModel = FetcherViewModel(orginization: orginization,
+                                     repo: repo,
+                                     username: username,
+                                     token: token,
+                                     result: result)
     }
 
     override var representedObject: Any? {
@@ -129,25 +137,34 @@ class ViewController: NSViewController, NSTextFieldDelegate {
             control.isEnabled = false
         }
         
-        let fetchRequest = FetchRequest(orginization: orginization.stringValue,
-                                        repo: repo.stringValue,
-                                        username: username.stringValue,
-                                        token: token.stringValue)
+        guard let viewModel = viewModel else { return }
         
-        let fetchHelper = FetchHelper(request: fetchRequest)
-        
-        fetchHelper.fetch { [weak self] in
+        viewModel.fetch {
+            [weak self] in
+            
             guard let strongself = self else { return }
-            
-            strongself.indicator.isHidden = true
-            
-            if let control = sender as? NSControl {
-                control.isEnabled = true
-            }
 
-            strongself.result.textStorage?.append(NSAttributedString(string: $0, attributes: [NSForegroundColorAttributeName : NSColor.white,
-                                                                                              NSFontAttributeName : strongself.logFont]))
+            if Thread.isMainThread {
+                strongself.fetchComplete(sender: sender)
+            } else {
+                DispatchQueue.main.async {
+                    strongself.fetchComplete(sender: sender)
+                }
+            }
         }
+    }
+    
+    func fetchComplete(sender: Any? = nil) {
+        indicator.isHidden = true
+        
+        if let control = sender as? NSControl {
+            control.isEnabled = true
+        }
+        
+        result?.textStorage?.append(formattedResult())
+        
+        let range = NSMakeRange(result.attributedString().string.characters.count , 0)
+        result?.scrollRangeToVisible(range)
     }
     
     @IBAction func open(_ sender: Any) {
@@ -158,10 +175,85 @@ class ViewController: NSViewController, NSTextFieldDelegate {
 
     override func controlTextDidEndEditing(_ obj: Notification) {
         if let number = obj.userInfo?["NSTextMovement"] as? NSNumber, number.intValue == NSReturnTextMovement {
+            
             if fetchButton.isEnabled == true {
                 fetch(fetchButton)
             }
+            
+//            switch textField {
+//            case orginization:
+//                DispatchQueue.main.async {
+//                    self.repo.becomeFirstResponder()
+//                }
+//            case repo:
+//                DispatchQueue.main.async {
+//                    self.username.becomeFirstResponder()
+//                }
+//            case username:
+//                DispatchQueue.main.async {
+//                    self.token.becomeFirstResponder()
+//                }
+//            case token:
+//                DispatchQueue.main.async {
+//                    self.token.resignFirstResponder()
+//                }
+//                if fetchButton.isEnabled == true {
+//                    fetch(fetchButton)
+//                }
+//            default:
+//                break
+//            }
         }
+    }
+    
+    func formattedResult() -> NSMutableAttributedString {
+        
+        guard let viewModel = viewModel else {
+            return NSMutableAttributedString(string: "")
+        }
+        
+        let result = NSMutableAttributedString(string: "")
+        
+        let fullNameTuple = formatted(title: "\nFull name: ", value: viewModel.fullName)
+        result.append(fullNameTuple.title)
+        result.append(fullNameTuple.value)
+        
+        let sizeTuple = formatted(title: "\nSize: ", value: viewModel.formattedSize)
+        result.append(sizeTuple.title)
+        result.append(sizeTuple.value)
+        
+        let cloneUrlTuple = formatted(title: "\nClone url: ", value: viewModel.cloneUrl)
+        cloneUrlTuple.value.addAttributes([NSLinkAttributeName:viewModel.cloneUrl], range: NSMakeRange(0, viewModel.cloneUrl.characters.count))
+        result.append(cloneUrlTuple.title)
+        result.append(cloneUrlTuple.value)
+        
+        if let parent = viewModel.parent {
+            let parentFullNameTuple = formatted(title: "\nParent full name: ", value: parent.fullName)
+            result.append(parentFullNameTuple.title)
+            result.append(parentFullNameTuple.value)
+            
+            let parentSizeTuple = formatted(title: "\nParent size: ", value: parent.formattedSize)
+            result.append(parentSizeTuple.title)
+            result.append(parentSizeTuple.value)
+            
+            let parentCloneUrlTuple = formatted(title: "\nParent clone url: ", value: parent.cloneUrl)
+            parentCloneUrlTuple.value.addAttributes([NSLinkAttributeName:parent.cloneUrl], range: NSMakeRange(0, parent.cloneUrl.characters.count))
+            result.append(parentCloneUrlTuple.title)
+            result.append(parentCloneUrlTuple.value)
+        }
+        
+        result.append(NSMutableAttributedString(string: "\n-------------------------------------------------------------------------",
+                                                attributes: [NSForegroundColorAttributeName : NSColor.blue,
+                                                             NSFontAttributeName : logFont]))
+
+        return result
+    }
+    
+    func formatted(title: String, value: String) -> (title: NSMutableAttributedString, value: NSMutableAttributedString) {
+        return (NSMutableAttributedString(string: title, attributes: [NSForegroundColorAttributeName : NSColor.yellow,
+                                                        NSFontAttributeName : logFont]),
+         NSMutableAttributedString(string: value, attributes: [NSForegroundColorAttributeName : NSColor.white,
+                                                        NSFontAttributeName : logFont]))
     }
 }
 
