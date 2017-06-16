@@ -263,7 +263,28 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate {
             return NSMutableAttributedString(string: "")
         }
         
+        let result = formattedAttributedStringFrom(viewModel: viewModel, title: "Origin")
+        result.append(formattedAttributedStringFrom(viewModel: viewModel.parent, title: "Parent"))
+//        result.append(formattedAttributedStringFrom(viewModel: viewModel.source, title: "Source"))
+        
+        result.append(NSMutableAttributedString(string: "\n-------------------------------------------------------------------------",
+                                                attributes: [NSForegroundColorAttributeName : NSColor.cyan,
+                                                             NSFontAttributeName : logFont]))
+
+        return result
+    }
+    
+    func formattedAttributedStringFrom(viewModel: FetcherViewModel?, title: String) -> NSMutableAttributedString {
+        guard let viewModel = viewModel else {
+            return NSMutableAttributedString(string: "")
+        }
+        
         let result = NSMutableAttributedString(string: "")
+        let titleTuple = formatted(title: "\n[\(title)]",
+                                    titleColor: NSColor.green,
+                                    value: "")
+        result.append(titleTuple.title)
+        result.append(titleTuple.value)
         
         let fullNameTuple = formatted(title: "\nFull name: ", value: viewModel.fullName)
         result.append(fullNameTuple.title)
@@ -278,32 +299,15 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate {
         result.append(cloneUrlTuple.title)
         result.append(cloneUrlTuple.value)
         
-        if let parent = viewModel.parent {
-            let parentFullNameTuple = formatted(title: "\nParent full name: ", value: parent.fullName)
-            result.append(parentFullNameTuple.title)
-            result.append(parentFullNameTuple.value)
-            
-            let parentSizeTuple = formatted(title: "\nParent size: ", value: parent.formattedSize)
-            result.append(parentSizeTuple.title)
-            result.append(parentSizeTuple.value)
-            
-            let parentCloneUrlTuple = formatted(title: "\nParent clone url: ", value: parent.cloneUrl)
-            parentCloneUrlTuple.value.addAttributes([NSLinkAttributeName:parent.cloneUrl], range: NSMakeRange(0, parent.cloneUrl.characters.count))
-            result.append(parentCloneUrlTuple.title)
-            result.append(parentCloneUrlTuple.value)
-        }
-        
-        result.append(NSMutableAttributedString(string: "\n-------------------------------------------------------------------------",
-                                                attributes: [NSForegroundColorAttributeName : NSColor.blue,
-                                                             NSFontAttributeName : logFont]))
-
         return result
     }
     
-    func formatted(title: String, value: String) -> (title: NSMutableAttributedString, value: NSMutableAttributedString) {
-        return (NSMutableAttributedString(string: title, attributes: [NSForegroundColorAttributeName : NSColor.yellow,
+    func formatted(title: String, titleColor: NSColor? = nil,
+                   value: String, valueColor: NSColor? = nil) -> (title: NSMutableAttributedString, value: NSMutableAttributedString) {
+
+        return (NSMutableAttributedString(string: title, attributes: [NSForegroundColorAttributeName : titleColor ?? NSColor.yellow,
                                                         NSFontAttributeName : logFont]),
-         NSMutableAttributedString(string: value, attributes: [NSForegroundColorAttributeName : NSColor.white,
+         NSMutableAttributedString(string: value, attributes: [NSForegroundColorAttributeName : valueColor ?? NSColor.white,
                                                         NSFontAttributeName : logFont]))
     }
 }

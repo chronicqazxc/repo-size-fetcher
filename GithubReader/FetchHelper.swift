@@ -62,8 +62,4 @@ class FetchHelper {
             completeHandler(data)
         }
     }
-    
-    func resultText(org:String, repo: String, size: String) -> String {
-        return "\(org) - \(repo): \n \(size) \n"
-    }
 }

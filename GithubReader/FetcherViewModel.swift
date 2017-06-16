@@ -77,6 +77,7 @@ class FetcherViewModel {
                     let _ = repo,
                     let _ = username,
                     let _ = token else {
+                        completeHandler()
                         return
             }
             
@@ -84,6 +85,7 @@ class FetcherViewModel {
             guard let _ = self.gitUrl,
                 let _ = username,
                 let _ = token else {
+                    completeHandler()
                     return
             }
         }
