@@ -72,13 +72,13 @@ class FetcherViewModel {
         guard let selectStatus = selectStatus else { return }
         
         switch selectStatus.currentSelect {
-            case .orgnization:
-                guard let _ = orginization,
-                    let _ = repo,
-                    let _ = username,
-                    let _ = token else {
-                        completeHandler()
-                        return
+        case .orgnization:
+            guard let _ = orginization,
+                let _ = repo,
+                let _ = username,
+                let _ = token else {
+                    completeHandler()
+                    return
             }
             
         case .githubUrl:
@@ -118,11 +118,13 @@ class FetcherViewModel {
     func parse(data: Data, completeHandler: ()->()) {
         
         guard let jsonData = try? JSONSerialization.jsonObject(with: data, options: []) else {
+            reset()
             completeHandler()
             return
         }
         
         guard let json = jsonData as? [AnyHashable : Any] else {
+            reset()
             completeHandler()
             return
         }
@@ -144,5 +146,13 @@ class FetcherViewModel {
         }
         
         completeHandler()
+    }
+    
+    func reset() {
+        fullName = ""
+        size = 0
+        cloneUrl = ""
+        parent = nil
+        source = nil
     }
 }

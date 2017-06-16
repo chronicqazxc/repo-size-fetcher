@@ -153,6 +153,16 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate {
         }
     }
     
+    var dateFormatter: DateFormatter {
+        get {
+            let dateFormatter = DateFormatter()
+            // http://nsdateformatter.com
+            dateFormatter.dateFormat = "MM-dd-yyyy HH:mm:ss\n\n"
+            dateFormatter.timeZone = TimeZone.current
+            return dateFormatter
+        }
+    }
+    
     var viewModel: FetcherViewModel?
     
     override func viewDidLoad() {
@@ -259,17 +269,19 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate {
     
     func formattedResult() -> NSMutableAttributedString {
         
+        let result = NSMutableAttributedString(string:"")
+        
         guard let viewModel = viewModel else {
-            return NSMutableAttributedString(string: "")
+            return result
         }
         
-        let result = formattedAttributedStringFrom(viewModel: viewModel, title: "Origin")
+        result.append(formattedAttributedStringFrom(viewModel: viewModel, title: "Origin"))
         result.append(formattedAttributedStringFrom(viewModel: viewModel.parent, title: "Parent"))
 //        result.append(formattedAttributedStringFrom(viewModel: viewModel.source, title: "Source"))
-        
-        result.append(NSMutableAttributedString(string: "\n-------------------------------------------------------------------------",
-                                                attributes: [NSForegroundColorAttributeName : NSColor.cyan,
-                                                             NSFontAttributeName : logFont]))
+
+        result.append(NSMutableAttributedString(string:"\(dateFormatter.string(from: Date()))",
+            attributes:[NSForegroundColorAttributeName : NSColor.cyan,
+                        NSFontAttributeName : logFont]))
 
         return result
     }
@@ -280,21 +292,21 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate {
         }
         
         let result = NSMutableAttributedString(string: "")
-        let titleTuple = formatted(title: "\n[\(title)]",
+        let titleTuple = formatted(title: "[\(title)]\n",
                                     titleColor: NSColor.green,
                                     value: "")
         result.append(titleTuple.title)
         result.append(titleTuple.value)
         
-        let fullNameTuple = formatted(title: "\nFull name: ", value: viewModel.fullName)
+        let fullNameTuple = formatted(title: "Full name: ", value: "\(viewModel.fullName)\n")
         result.append(fullNameTuple.title)
         result.append(fullNameTuple.value)
         
-        let sizeTuple = formatted(title: "\nSize: ", value: viewModel.formattedSize)
+        let sizeTuple = formatted(title: "Size: ", value: "\(viewModel.formattedSize)\n")
         result.append(sizeTuple.title)
         result.append(sizeTuple.value)
         
-        let cloneUrlTuple = formatted(title: "\nClone url: ", value: viewModel.cloneUrl)
+        let cloneUrlTuple = formatted(title: "Clone url: ", value: "\(viewModel.cloneUrl)\n")
         cloneUrlTuple.value.addAttributes([NSLinkAttributeName:viewModel.cloneUrl], range: NSMakeRange(0, viewModel.cloneUrl.characters.count))
         result.append(cloneUrlTuple.title)
         result.append(cloneUrlTuple.value)
