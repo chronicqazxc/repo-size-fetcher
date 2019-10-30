@@ -7,11 +7,31 @@
 //
 
 import Foundation
+import WHCoreServices
 
-struct FetchRequest {
-    let gitUrl: String
-    let username: String
+protocol Request {
+    var apiUrl: String { get }
+    var token: String { get }
+}
+
+struct FetchRequestOrginization: Request {
+    let orginization: String
+    let repoName: String
     let token: String
+    var apiUrl: String {
+        return "https://github.disney.com/api/v3/repos/\(orginization)/\(repoName)"
+    }
+}
+
+struct FetchRequestGitUrl: Request {
+    let gitUrl: String
+    let token: String
+    var apiUrl: String {
+        var split = gitUrl.split(separator: "/")
+        let repoName = split.removeLast()
+        let orginization = split.removeLast()
+        return "https://github.disney.com/api/v3/repos/\(orginization)/\(repoName)"
+    }
 }
 
 struct FetchResponse {
@@ -19,47 +39,30 @@ struct FetchResponse {
 }
 
 class FetchHelper {
-    let request: FetchRequest
+    let request: Request
     
     deinit {
         print("fetcher deinit")
     }
     
-    init(request: FetchRequest) {
+    init(request: Request) {
         self.request = request
     }
     
     func fetch(log: String? = #function, completeHandler: @escaping (Data?)->()) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            
-            print("\(log ?? ""): \(ProcessInfo.processInfo.processIdentifier)")
-            
-            let pipe = Pipe()
-            let file = pipe.fileHandleForReading
-            
-            let task = Process()
-            task.launchPath = "/bin/bash"
-            
-            guard let path = Bundle.main.path(forResource: "fetch",
-                                              ofType: "sh") else {
-                                                print("shell not found")
-                                                completeHandler(nil)
-                                                return
+        
+//        let gitUrl = selectStatus.currentSelect == .orgnization ? "https://github.disney.com/api/v3/repos/\(request.orginization)/\(request.repo)" : self.gitUrl!.stringValue
+        
+        guard let url = URL(string: self.request.apiUrl) else {
+                completeHandler(nil)
+                return
+        }
+        Service.shared.get(url: url, token: self.request.token) { (data, response, error) in
+            if let data = data {
+                completeHandler(data)
+            } else {
+                completeHandler(nil)
             }
-            
-            task.arguments = [path,
-                              self.request.gitUrl,
-                              self.request.username,
-                              self.request.token]
-            
-            task.standardOutput = pipe
-            task.launch()
-            
-            let data = file.readDataToEndOfFile()
-            
-            file.closeFile()
-            
-            completeHandler(data)
         }
     }
 }
