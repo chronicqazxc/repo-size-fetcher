@@ -35,7 +35,7 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate {
         didSet {
             gitUrlLabel.stringValue = ""
             
-            NotificationCenter.default.addObserver(forName: NSNotification.Name.NSControlTextDidChange, object: gitUrl, queue: nil) { [weak self] (notification) in
+            NotificationCenter.default.addObserver(forName: NSControl.textDidChangeNotification, object: gitUrl, queue: nil) { [weak self] (notification) in
                 if self?.gitUrl.stringValue == "" {
                     self?.gitUrlLabel.stringValue = ""
                 } else {
@@ -47,7 +47,7 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate {
     
     @IBOutlet weak var orginizationLabel: NSTextField! {
         didSet {
-            NotificationCenter.default.addObserver(forName: NSNotification.Name.NSControlTextDidChange, object: orginization, queue: nil) { [weak self] (notification) in
+            NotificationCenter.default.addObserver(forName: NSControl.textDidChangeNotification, object: orginization, queue: nil) { [weak self] (notification) in
                 if self?.orginization.stringValue == "" {
                     self?.orginizationLabel.stringValue = ""
                 } else {
@@ -61,7 +61,7 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate {
         didSet {
             repoLabel.becomeFirstResponder()
             
-            NotificationCenter.default.addObserver(forName: NSNotification.Name.NSControlTextDidChange, object: repo, queue: nil) { [weak self] (notification) in
+            NotificationCenter.default.addObserver(forName: NSControl.textDidChangeNotification, object: repo, queue: nil) { [weak self] (notification) in
                 if self?.repo.stringValue == "" {
                     self?.repoLabel.stringValue = ""
                 } else {
@@ -73,7 +73,7 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate {
     
     @IBOutlet weak var usernameLabel: NSTextField! {
         didSet {
-            NotificationCenter.default.addObserver(forName: NSNotification.Name.NSControlTextDidChange, object: username, queue: nil) { [weak self] (notification) in
+            NotificationCenter.default.addObserver(forName: NSControl.textDidChangeNotification, object: username, queue: nil) { [weak self] (notification) in
                 if self?.username.stringValue == "" {
                     self?.usernameLabel.stringValue = ""
                 } else {
@@ -85,7 +85,7 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate {
     
     @IBOutlet weak var tokenLabel: NSTextField! {
         didSet {
-            NotificationCenter.default.addObserver(forName: NSNotification.Name.NSControlTextDidChange, object: token, queue: nil) { [weak self] (notification) in
+            NotificationCenter.default.addObserver(forName: NSControl.textDidChangeNotification, object: token, queue: nil) { [weak self] (notification) in
                 if self?.token.stringValue == "" {
                     self?.tokenLabel.stringValue = ""
                 } else {
@@ -175,6 +175,15 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate {
                                      token: token,
                                      result: result,
                                      selectStatus: selectStatus)
+        
+        NotificationCenter.default.addObserver(forName: NSControl.textDidEndEditingNotification, object: nil, queue: nil) { [weak self] (notification) in
+            if let number = notification.userInfo?["NSTextMovement"] as? NSNumber, number.intValue == NSReturnTextMovement {
+                
+                if let fetchButton = self?.fetchButton, fetchButton.isEnabled == true {
+                    self?.fetch(fetchButton)
+                }
+            }
+        }
     }
 
     override var representedObject: Any? {
@@ -216,46 +225,13 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate {
         
         result?.textStorage?.append(formattedResult())
         
-        let range = NSMakeRange(result.attributedString().string.characters.count , 0)
+        let range = NSMakeRange(result.attributedString().string.count , 0)
         result?.scrollRangeToVisible(range)
     }
     
     @IBAction func open(_ sender: Any) {
         if let button = sender as? NSButton, let url = URL(string: button.title) {
-            NSWorkspace.shared().open(url)
-        }
-    }
-
-    override func controlTextDidEndEditing(_ obj: Notification) {
-        if let number = obj.userInfo?["NSTextMovement"] as? NSNumber, number.intValue == NSReturnTextMovement {
-            
-            if fetchButton.isEnabled == true {
-                fetch(fetchButton)
-            }
-            
-//            switch textField {
-//            case orginization:
-//                DispatchQueue.main.async {
-//                    self.repo.becomeFirstResponder()
-//                }
-//            case repo:
-//                DispatchQueue.main.async {
-//                    self.username.becomeFirstResponder()
-//                }
-//            case username:
-//                DispatchQueue.main.async {
-//                    self.token.becomeFirstResponder()
-//                }
-//            case token:
-//                DispatchQueue.main.async {
-//                    self.token.resignFirstResponder()
-//                }
-//                if fetchButton.isEnabled == true {
-//                    fetch(fetchButton)
-//                }
-//            default:
-//                break
-//            }
+            NSWorkspace.shared.open(url)
         }
     }
     
@@ -280,8 +256,8 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate {
 //        result.append(formattedAttributedStringFrom(viewModel: viewModel.source, title: "Source"))
 
         result.append(NSMutableAttributedString(string:"\(dateFormatter.string(from: Date()))",
-            attributes:[NSForegroundColorAttributeName : NSColor.cyan,
-                        NSFontAttributeName : logFont]))
+            attributes:[NSAttributedString.Key.foregroundColor : NSColor.cyan,
+                        NSAttributedString.Key.font : logFont]))
 
         return result
     }
@@ -307,7 +283,7 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate {
         result.append(sizeTuple.value)
         
         let cloneUrlTuple = formatted(title: "Clone url: ", value: "\(viewModel.cloneUrl)\n")
-        cloneUrlTuple.value.addAttributes([NSLinkAttributeName:viewModel.cloneUrl], range: NSMakeRange(0, viewModel.cloneUrl.characters.count))
+        cloneUrlTuple.value.addAttributes([NSAttributedString.Key.link: viewModel.cloneUrl], range: NSMakeRange(0, viewModel.cloneUrl.count))
         result.append(cloneUrlTuple.title)
         result.append(cloneUrlTuple.value)
         
@@ -317,10 +293,10 @@ class ViewController: NSViewController, NSTextFieldDelegate, NSTabViewDelegate {
     func formatted(title: String, titleColor: NSColor? = nil,
                    value: String, valueColor: NSColor? = nil) -> (title: NSMutableAttributedString, value: NSMutableAttributedString) {
 
-        return (NSMutableAttributedString(string: title, attributes: [NSForegroundColorAttributeName : titleColor ?? NSColor.yellow,
-                                                        NSFontAttributeName : logFont]),
-         NSMutableAttributedString(string: value, attributes: [NSForegroundColorAttributeName : valueColor ?? NSColor.white,
-                                                        NSFontAttributeName : logFont]))
+        return (NSMutableAttributedString(string: title, attributes: [NSAttributedString.Key.foregroundColor : titleColor ?? NSColor.yellow,
+                                                                      NSAttributedString.Key.font : logFont]),
+                NSMutableAttributedString(string: value, attributes: [NSAttributedString.Key.foregroundColor : valueColor ?? NSColor.white,
+                                                                      NSAttributedString.Key.font : logFont]))
     }
 }
 
