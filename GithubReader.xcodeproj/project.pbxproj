@@ -473,7 +473,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.disney.GithubReader;
 				PRODUCT_NAME = RepoSizeFetcher;
 				SWIFT_VERSION = 5.0;
@@ -496,7 +496,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MARKETING_VERSION = 1.2.1;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.disney.GithubReader;
 				PRODUCT_NAME = RepoSizeFetcher;
 				SWIFT_VERSION = 5.0;
