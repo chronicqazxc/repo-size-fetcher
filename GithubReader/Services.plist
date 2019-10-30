@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>GitHub</key>
+	<string>{GitHubHost}/repos/{orginization}/{repoName}</string>
+	<key>GitHubHost</key>
+	<string>https://api.github.com</string>
+	<key>GitHubDisney</key>
+	<string>{GitHubDisneyHost}/api/v3/repos/{orginization}/{repoName}</string>
+	<key>GitHubDisneyHost</key>
+	<string>https://github.disney.com</string>
+</dict>
+</plist>

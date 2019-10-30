@@ -19,7 +19,7 @@ struct FetchRequestOrginization: Request {
     let repoName: String
     let token: String
     var apiUrl: String {
-        return "https://github.disney.com/api/v3/repos/\(orginization)/\(repoName)"
+        return Service.getPath("GitHubDisney", token: ["orginization": orginization, "repoName": repoName]) ?? ""
     }
 }
 
@@ -28,9 +28,9 @@ struct FetchRequestGitUrl: Request {
     let token: String
     var apiUrl: String {
         var split = gitUrl.split(separator: "/")
-        let repoName = split.removeLast()
-        let orginization = split.removeLast()
-        return "https://github.disney.com/api/v3/repos/\(orginization)/\(repoName)"
+        let repoName = String(split.removeLast())
+        let orginization = String(split.removeLast())
+        return Service.getPath("GitHubDisney", token: ["orginization": orginization, "repoName": repoName]) ?? ""
     }
 }
 
