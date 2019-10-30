@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import WHCoreServices
 
 private let kFullName = "full_name"
 private let kSize = "size"
@@ -70,6 +71,7 @@ class FetcherViewModel {
     func fetch(log: String? = #function, completeHandler: @escaping ()->()) {
 
         guard let selectStatus = selectStatus else { return }
+        var request: Request!
         
         switch selectStatus.currentSelect {
         case .orgnization:
@@ -80,7 +82,9 @@ class FetcherViewModel {
                     completeHandler()
                     return
             }
-            
+            request = FetchRequestOrginization(orginization: orginization!.stringValue,
+                                               repoName: repo!.stringValue,
+                                               token: token!.stringValue)
         case .githubUrl:
             guard let _ = self.gitUrl,
                 let _ = username,
@@ -88,15 +92,11 @@ class FetcherViewModel {
                     completeHandler()
                     return
             }
+            request = FetchRequestGitUrl(gitUrl: gitUrl!.stringValue,
+                                         token: token!.stringValue)
         }
-
-        let gitUrl = selectStatus.currentSelect == .orgnization ? "http://\(orginization!.stringValue)/\(repo!.stringValue).git" : self.gitUrl!.stringValue
         
-        let fetchRequest = FetchRequest(gitUrl: gitUrl,
-                                        username: username!.stringValue,
-                                        token: token!.stringValue)
-        
-        let fetchHelper = FetchHelper(request: fetchRequest)
+        let fetchHelper = FetchHelper(request: request)
         
         fetchHelper.fetch { [weak self] (result) in
             

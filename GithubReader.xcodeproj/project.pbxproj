@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,6 +17,8 @@
 		01249A651EEF7D0400469022 /* FetchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01249A641EEF7D0400469022 /* FetchHelper.swift */; };
 		01249A691EF2733600469022 /* FetcherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01249A681EF2733600469022 /* FetcherViewModel.swift */; };
 		01249A6A1EF27F7200469022 /* FetcherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01249A681EF2733600469022 /* FetcherViewModel.swift */; };
+		A6B88E39236978610004495F /* WHPromise.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B88E37236978610004495F /* WHPromise.framework */; };
+		A6B88E3B236978610004495F /* WHCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B88E38236978610004495F /* WHCoreServices.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,11 @@
 		01249A621EEECA4900469022 /* fetch.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = fetch.sh; sourceTree = "<group>"; };
 		01249A641EEF7D0400469022 /* FetchHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchHelper.swift; sourceTree = "<group>"; };
 		01249A681EF2733600469022 /* FetcherViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetcherViewModel.swift; sourceTree = "<group>"; };
+		A6B88E2223694B7D0004495F /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		A6B88E34236977D00004495F /* input.xcfilelist */ = {isa = PBXFileReference; lastKnownFileType = text.xcfilelist; path = input.xcfilelist; sourceTree = "<group>"; };
+		A6B88E35236977D60004495F /* output.xcfilelist */ = {isa = PBXFileReference; lastKnownFileType = text.xcfilelist; path = output.xcfilelist; sourceTree = "<group>"; };
+		A6B88E37236978610004495F /* WHPromise.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WHPromise.framework; path = Carthage/Build/Mac/WHPromise.framework; sourceTree = "<group>"; };
+		A6B88E38236978610004495F /* WHCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WHCoreServices.framework; path = Carthage/Build/Mac/WHCoreServices.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +66,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6B88E3B236978610004495F /* WHCoreServices.framework in Frameworks */,
+				A6B88E39236978610004495F /* WHPromise.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,10 +91,14 @@
 		01249A291EEEC76D00469022 = {
 			isa = PBXGroup;
 			children = (
+				A6B88E2223694B7D0004495F /* Cartfile */,
+				A6B88E34236977D00004495F /* input.xcfilelist */,
+				A6B88E35236977D60004495F /* output.xcfilelist */,
 				01249A341EEEC76D00469022 /* GithubReader */,
 				01249A461EEEC76D00469022 /* GithubReaderTests */,
 				01249A511EEEC76D00469022 /* GithubReaderUITests */,
 				01249A331EEEC76D00469022 /* Products */,
+				A6B88E36236978610004495F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -132,6 +145,15 @@
 			path = GithubReaderUITests;
 			sourceTree = "<group>";
 		};
+		A6B88E36236978610004495F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A6B88E38236978610004495F /* WHCoreServices.framework */,
+				A6B88E37236978610004495F /* WHPromise.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -142,6 +164,7 @@
 				01249A2E1EEEC76D00469022 /* Sources */,
 				01249A2F1EEEC76D00469022 /* Frameworks */,
 				01249A301EEEC76D00469022 /* Resources */,
+				A6B88E3E23699BEC0004495F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -264,6 +287,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A6B88E3E23699BEC0004495F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"$(SRCROOT)/input.xcfilelist",
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+				"$(SRCROOT)/output.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		01249A2E1EEEC76D00469022 /* Sources */ = {
@@ -407,7 +452,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Release;
 		};
@@ -417,8 +463,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 86BD45EKTC;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = GithubReader/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.disney.GithubReader;
@@ -433,8 +486,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 86BD45EKTC;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = GithubReader/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.disney.GithubReader;
@@ -451,10 +511,14 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 86BD45EKTC;
 				INFOPLIST_FILE = GithubReaderTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.disney.GithubReaderTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RepoSizeFetcher.app/Contents/MacOS/RepoSizeFetcher";
 			};
 			name = Debug;
@@ -467,10 +531,14 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 86BD45EKTC;
 				INFOPLIST_FILE = GithubReaderTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.disney.GithubReaderTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RepoSizeFetcher.app/Contents/MacOS/RepoSizeFetcher";
 			};
 			name = Release;
@@ -482,10 +550,14 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 86BD45EKTC;
 				INFOPLIST_FILE = GithubReaderUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.disney.GithubReaderUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = GithubReader;
 			};
 			name = Debug;
@@ -497,10 +569,14 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 86BD45EKTC;
 				INFOPLIST_FILE = GithubReaderUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.disney.GithubReaderUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = GithubReader;
 			};
 			name = Release;
