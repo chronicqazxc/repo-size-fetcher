@@ -419,6 +419,8 @@
 				DEVELOPMENT_TEAM = 86BD45EKTC;
 				INFOPLIST_FILE = GithubReader/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.disney.GithubReader;
 				PRODUCT_NAME = RepoSizeFetcher;
 				SWIFT_VERSION = 5.0;
@@ -433,6 +435,8 @@
 				DEVELOPMENT_TEAM = 86BD45EKTC;
 				INFOPLIST_FILE = GithubReader/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.disney.GithubReader;
 				PRODUCT_NAME = RepoSizeFetcher;
 				SWIFT_VERSION = 5.0;
