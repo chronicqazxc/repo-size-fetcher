@@ -10,11 +10,13 @@ There are two modes to fetch repo's size, you can choose any type which is conve
 2. By Git URL.
 
 ## Hot to build
-[WHCoreServices](https://github.com/chronicqazxc/WHCoreServices)
-[WHPromise](https://github.com/chronicqazxc/WHPromise)
 ```shell
 carthage update --cache-builds --platform osx
 ```
+
+## Dependencies   
+* [WHCoreServices](https://github.com/chronicqazxc/WHCoreServices)
+* [WHPromise](https://github.com/chronicqazxc/WHPromise)
 
 |  | 
 | ------ | 
