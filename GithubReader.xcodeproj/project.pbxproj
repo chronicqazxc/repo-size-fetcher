@@ -17,6 +17,7 @@
 		01249A651EEF7D0400469022 /* FetchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01249A641EEF7D0400469022 /* FetchHelper.swift */; };
 		01249A691EF2733600469022 /* FetcherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01249A681EF2733600469022 /* FetcherViewModel.swift */; };
 		01249A6A1EF27F7200469022 /* FetcherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01249A681EF2733600469022 /* FetcherViewModel.swift */; };
+		A60A8A932369A52C00E21EBD /* Services.plist in Resources */ = {isa = PBXBuildFile; fileRef = A60A8A922369A52C00E21EBD /* Services.plist */; };
 		A6B88E39236978610004495F /* WHPromise.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B88E37236978610004495F /* WHPromise.framework */; };
 		A6B88E3B236978610004495F /* WHCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B88E38236978610004495F /* WHCoreServices.framework */; };
 /* End PBXBuildFile section */
@@ -54,6 +55,7 @@
 		01249A621EEECA4900469022 /* fetch.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = fetch.sh; sourceTree = "<group>"; };
 		01249A641EEF7D0400469022 /* FetchHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchHelper.swift; sourceTree = "<group>"; };
 		01249A681EF2733600469022 /* FetcherViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetcherViewModel.swift; sourceTree = "<group>"; };
+		A60A8A922369A52C00E21EBD /* Services.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Services.plist; sourceTree = "<group>"; };
 		A6B88E2223694B7D0004495F /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		A6B88E34236977D00004495F /* input.xcfilelist */ = {isa = PBXFileReference; lastKnownFileType = text.xcfilelist; path = input.xcfilelist; sourceTree = "<group>"; };
 		A6B88E35236977D60004495F /* output.xcfilelist */ = {isa = PBXFileReference; lastKnownFileType = text.xcfilelist; path = output.xcfilelist; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				01249A391EEEC76D00469022 /* Assets.xcassets */,
 				01249A3B1EEEC76D00469022 /* Main.storyboard */,
 				01249A3E1EEEC76D00469022 /* Info.plist */,
+				A60A8A922369A52C00E21EBD /* Services.plist */,
 			);
 			path = GithubReader;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A60A8A932369A52C00E21EBD /* Services.plist in Resources */,
 				01249A3A1EEEC76D00469022 /* Assets.xcassets in Resources */,
 				01249A3D1EEEC76D00469022 /* Main.storyboard in Resources */,
 				01249A631EEECA4900469022 /* fetch.sh in Resources */,
