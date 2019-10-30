@@ -2,8 +2,8 @@
 //  FetchHelper.swift
 //  GithubReader
 //
-//  Created by Wayne, Xiao X. -ND on 6/13/17.
-//  Copyright © 2017 Wayne, Xiao X. -ND. All rights reserved.
+//  Created by Wayne, Hsiao on 6/13/17.
+//  Copyright © 2017 Wayne, Hsiao. All rights reserved.
 //
 
 import Foundation
@@ -19,7 +19,7 @@ struct FetchRequestOrginization: Request {
     let repoName: String
     let token: String
     var apiUrl: String {
-        return Service.getPath("GitHubDisney", token: ["orginization": orginization, "repoName": repoName]) ?? ""
+        return Service.getPath("GitHub", token: ["orginization": orginization, "repoName": repoName]) ?? ""
     }
 }
 
@@ -30,7 +30,7 @@ struct FetchRequestGitUrl: Request {
         var split = gitUrl.split(separator: "/")
         let repoName = String(split.removeLast())
         let orginization = String(split.removeLast())
-        return Service.getPath("GitHubDisney", token: ["orginization": orginization, "repoName": repoName]) ?? ""
+        return Service.getPath("GitHub", token: ["orginization": orginization, "repoName": repoName]) ?? ""
     }
 }
 
@@ -50,8 +50,6 @@ class FetchHelper {
     }
     
     func fetch(log: String? = #function, completeHandler: @escaping (Data?)->()) {
-        
-//        let gitUrl = selectStatus.currentSelect == .orgnization ? "https://github.disney.com/api/v3/repos/\(request.orginization)/\(request.repo)" : self.gitUrl!.stringValue
         
         guard let url = URL(string: self.request.apiUrl) else {
                 completeHandler(nil)

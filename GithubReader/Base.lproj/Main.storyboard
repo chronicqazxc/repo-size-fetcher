@@ -939,7 +939,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="275" id="zqn-eA-niV"/>
                                                 </constraints>
-                                                <buttonCell key="cell" type="inline" title="https://github.disney.com/HSIAY003/repo-size-fetcher" bezelStyle="inline" image="buttonCell:O6U-7j-YIW:image" imagePosition="overlaps" alignment="center" inset="2" id="O6U-7j-YIW">
+                                                <buttonCell key="cell" type="inline" title="https://github.com/chronicqazxc/repo-size-fetcher" bezelStyle="inline" image="buttonCell:O6U-7j-YIW:image" imagePosition="overlaps" alignment="center" inset="2" id="O6U-7j-YIW">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" size="10" name="Avenir-Roman"/>
                                                 </buttonCell>

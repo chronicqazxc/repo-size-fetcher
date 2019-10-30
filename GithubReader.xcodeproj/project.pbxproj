@@ -13,7 +13,6 @@
 		01249A3D1EEEC76D00469022 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01249A3B1EEEC76D00469022 /* Main.storyboard */; };
 		01249A481EEEC76D00469022 /* GithubReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01249A471EEEC76D00469022 /* GithubReaderTests.swift */; };
 		01249A531EEEC76D00469022 /* GithubReaderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01249A521EEEC76D00469022 /* GithubReaderUITests.swift */; };
-		01249A631EEECA4900469022 /* fetch.sh in Resources */ = {isa = PBXBuildFile; fileRef = 01249A621EEECA4900469022 /* fetch.sh */; };
 		01249A651EEF7D0400469022 /* FetchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01249A641EEF7D0400469022 /* FetchHelper.swift */; };
 		01249A691EF2733600469022 /* FetcherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01249A681EF2733600469022 /* FetcherViewModel.swift */; };
 		01249A6A1EF27F7200469022 /* FetcherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01249A681EF2733600469022 /* FetcherViewModel.swift */; };
@@ -52,7 +51,6 @@
 		01249A4E1EEEC76D00469022 /* GithubReaderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GithubReaderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		01249A521EEEC76D00469022 /* GithubReaderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubReaderUITests.swift; sourceTree = "<group>"; };
 		01249A541EEEC76D00469022 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		01249A621EEECA4900469022 /* fetch.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = fetch.sh; sourceTree = "<group>"; };
 		01249A641EEF7D0400469022 /* FetchHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchHelper.swift; sourceTree = "<group>"; };
 		01249A681EF2733600469022 /* FetcherViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetcherViewModel.swift; sourceTree = "<group>"; };
 		A60A8A922369A52C00E21EBD /* Services.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Services.plist; sourceTree = "<group>"; };
@@ -121,7 +119,6 @@
 				01249A371EEEC76D00469022 /* ViewController.swift */,
 				01249A681EF2733600469022 /* FetcherViewModel.swift */,
 				01249A641EEF7D0400469022 /* FetchHelper.swift */,
-				01249A621EEECA4900469022 /* fetch.sh */,
 				01249A391EEEC76D00469022 /* Assets.xcassets */,
 				01249A3B1EEEC76D00469022 /* Main.storyboard */,
 				01249A3E1EEEC76D00469022 /* Info.plist */,
@@ -272,7 +269,6 @@
 				A60A8A932369A52C00E21EBD /* Services.plist in Resources */,
 				01249A3A1EEEC76D00469022 /* Assets.xcassets in Resources */,
 				01249A3D1EEEC76D00469022 /* Main.storyboard in Resources */,
-				01249A631EEECA4900469022 /* fetch.sh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,7 +474,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MARKETING_VERSION = 1.3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.disney.GithubReader;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wayne.GithubReader;
 				PRODUCT_NAME = RepoSizeFetcher;
 				SWIFT_VERSION = 5.0;
 			};
@@ -501,7 +497,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MARKETING_VERSION = 1.3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.disney.GithubReader;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wayne.GithubReader;
 				PRODUCT_NAME = RepoSizeFetcher;
 				SWIFT_VERSION = 5.0;
 			};
@@ -520,7 +516,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.disney.GithubReaderTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wayne.GithubReaderTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RepoSizeFetcher.app/Contents/MacOS/RepoSizeFetcher";
@@ -540,7 +536,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.disney.GithubReaderTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wayne.GithubReaderTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RepoSizeFetcher.app/Contents/MacOS/RepoSizeFetcher";
@@ -559,7 +555,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.disney.GithubReaderUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wayne.GithubReaderUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = GithubReader;
@@ -578,7 +574,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.disney.GithubReaderUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wayne.GithubReaderUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = GithubReader;

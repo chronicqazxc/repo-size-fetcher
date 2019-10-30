@@ -2,8 +2,8 @@
 //  FetcherViewModel.swift
 //  GithubReader
 //
-//  Created by Wayne, Xiao X. -ND on 6/15/17.
-//  Copyright © 2017 Wayne, Xiao X. -ND. All rights reserved.
+//  Created by Wayne, Hsiao on 6/15/17.
+//  Copyright © 2017 Wayne, Hsiao. All rights reserved.
 //
 
 import Cocoa
