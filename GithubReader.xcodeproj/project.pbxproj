@@ -54,6 +54,7 @@
 		01249A641EEF7D0400469022 /* FetchHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchHelper.swift; sourceTree = "<group>"; };
 		01249A681EF2733600469022 /* FetcherViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetcherViewModel.swift; sourceTree = "<group>"; };
 		A60A8A922369A52C00E21EBD /* Services.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Services.plist; sourceTree = "<group>"; };
+		A60A8A942369ABD700E21EBD /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A6B88E2223694B7D0004495F /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		A6B88E34236977D00004495F /* input.xcfilelist */ = {isa = PBXFileReference; lastKnownFileType = text.xcfilelist; path = input.xcfilelist; sourceTree = "<group>"; };
 		A6B88E35236977D60004495F /* output.xcfilelist */ = {isa = PBXFileReference; lastKnownFileType = text.xcfilelist; path = output.xcfilelist; sourceTree = "<group>"; };
@@ -91,6 +92,7 @@
 		01249A291EEEC76D00469022 = {
 			isa = PBXGroup;
 			children = (
+				A60A8A942369ABD700E21EBD /* README.md */,
 				A6B88E2223694B7D0004495F /* Cartfile */,
 				A6B88E34236977D00004495F /* input.xcfilelist */,
 				A6B88E35236977D60004495F /* output.xcfilelist */,

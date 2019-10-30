@@ -41,10 +41,6 @@ struct FetchResponse {
 class FetchHelper {
     let request: Request
     
-    deinit {
-        print("fetcher deinit")
-    }
-    
     init(request: Request) {
         self.request = request
     }
